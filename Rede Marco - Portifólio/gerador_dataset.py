@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import numpy as np
 import datetime
@@ -6,7 +5,6 @@ import datetime
 print("Iniciando a geração do dataset de consumo de energia...")
 
 # --- 1. Definição das Lojas (Unidades) ---
-# Lista com 92 lojas, incluindo bairro, cidade, UF e região.
 lojas_info = [
     {'bairro': 'Liberdade', 'cidade': 'São Paulo', 'uf': 'SP', 'regiao': 'Sudeste'},
     {'bairro': 'Copacabana', 'cidade': 'Rio de Janeiro', 'uf': 'RJ', 'regiao': 'Sudeste'},
@@ -102,25 +100,21 @@ lojas_info = [
     {'bairro': 'Stiep', 'cidade': 'Salvador', 'uf': 'BA', 'regiao': 'Nordeste'}
 ]
 
-# Distribuição de formatos: 14 Hiper, 34 Super, 44 Bairro
+# Distribuição de formatos: 14 Hiper, 34 Super, 44 Bairro = 92 Total
 formatos = ['Hiper'] * 14 + ['Super'] * 34 + ['Bairro'] * 44
-np.random.shuffle(formatos) # Embaralha os formatos para distribuição aleatória
+np.random.shuffle(formatos)
 
 lojas_df = pd.DataFrame(lojas_info)
 lojas_df['Formato'] = formatos
 
 # --- 2. Criação das Colunas Adicionais para as Lojas ---
-
-# Área da unidade baseada no formato
 area_map = {'Hiper': (3500, 6000), 'Super': (1500, 3000), 'Bairro': (400, 1200)}
 lojas_df['Area da unidade em m²'] = lojas_df['Formato'].apply(lambda f: np.random.randint(area_map[f][0], area_map[f][1]))
 
-# Nome da loja e sigla
 lojas_df['Nome'] = lojas_df['Formato'] + ' ' + lojas_df['bairro']
 lojas_df['Sigla'] = lojas_df['bairro'].apply(lambda n: n[:3].upper())
 lojas_df['Unidade'] = lojas_df['Sigla'] + ' - ' + lojas_df['Nome']
 
-# Consumo base por formato e fator de sazonalidade por região
 consumo_base_map = {'Hiper': 5000, 'Super': 2200, 'Bairro': 800}
 sazonalidade_map = {'Norte': 0.15, 'Nordeste': 0.20, 'Centro-Oeste': 0.30, 'Sudeste': 0.35, 'Sul': 0.40}
 
@@ -128,50 +122,47 @@ lojas_df['consumo_base'] = lojas_df['Formato'].map(consumo_base_map)
 lojas_df['fator_sazonalidade'] = lojas_df['regiao'].map(sazonalidade_map)
 
 # --- 3. Geração da Série Temporal ---
-# Datas diárias para os últimos 3 anos
 hoje = datetime.date.today()
 data_final = hoje - datetime.timedelta(days=1)
 data_inicial = data_final - datetime.timedelta(days=3*365 -1)
 datas = pd.to_datetime(pd.date_range(start=data_inicial, end=data_final, freq='D'))
 
 # --- 4. Combinação de Lojas e Datas e Cálculo do Consumo ---
-# Cria um DataFrame com todas as combinações de lojas e datas
 df_final = pd.DataFrame(pd.MultiIndex.from_product([lojas_df['Unidade'], datas], names=['Unidade', 'Data']).to_frame(index=False))
 
-# Junta as informações das lojas
 df_final = pd.merge(df_final, lojas_df, on='Unidade')
 
-# Cálculo do consumo com sazonalidade e aleatoriedade
-# A função -cos(x) modela o padrão: alto no início/fim do ano e baixo no meio
 dia_do_ano = df_final['Data'].dt.dayofyear
-fator_sazonal = -np.cos(2 * np.pi * dia_do_ano / 365) # Onda cosenoidal invertida
 
-# O consumo é a base * (1 + variação_sazonal + ruído_aleatório)
+# ===== CORREÇÃO DA LÓGICA DE SAZONALIDADE =====
+# A função cos(x) modela o padrão: alto no início/fim do ano e baixo no meio
+fator_sazonal = np.cos(2 * np.pi * dia_do_ano / 365)
+
 variacao_sazonal = df_final['fator_sazonalidade'] * fator_sazonal
-ruido_aleatorio = np.random.uniform(-0.05, 0.05, size=len(df_final)) # Pequena variação diária
+ruido_aleatorio = np.random.uniform(-0.05, 0.05, size=len(df_final))
 
 df_final['Consumo kWh'] = df_final['consumo_base'] * (1 + variacao_sazonal + ruido_aleatorio)
 df_final['Consumo kWh'] = df_final['Consumo kWh'].round(2)
 
 # --- 5. Finalização e Exportação ---
-# Organiza e seleciona as colunas finais
 colunas_finais = [
-    'Unidade', 'Area da unidade em m²', 'Data', 'Consumo kWh',
+    'Unidade', 'Nome', 'Area da unidade em m²', 'Data', 'Consumo kWh',
     'Formato', 'cidade', 'uf', 'regiao'
 ]
 df_final = df_final[colunas_finais]
 
-# Pega o caminho absoluto do diretório onde o script está
-diretorio_do_script = os.path.dirname(os.path.abspath(__file__))
+# Renomeando as colunas para o formato final desejado
+df_final.rename(columns={
+    'cidade': 'Cidade',
+    'uf': 'UF',
+    'regiao': 'Região'
+}, inplace=True)
+
 
 # Exporta para CSV
-nome_do_arquivo = 'consumo_energia_marco.csv'
+output_filename = 'consumo_energia_supermercados.csv'
+df_final.to_csv(output_filename, index=False, date_format='%Y-%m-%d')
 
-# Junta o caminho do diretório com o nome do arquivo para ter um caminho completo
-caminho_completo = os.path.join(diretorio_do_script, nome_do_arquivo)
-
-df_final.to_csv(caminho_completo, index=False, date_format='%Y-%m-%d')
-
-print(f"Dataset gerado com sucesso! Salvo em: {caminho_completo}")
+print(f"Dataset gerado com sucesso! {len(df_final)} linhas foram salvas em '{output_filename}'.")
 print("\nPré-visualização do dataset:")
 print(df_final.head())
