@@ -100,7 +100,7 @@ lojas_info = [
     {'bairro': 'Stiep', 'cidade': 'Salvador', 'uf': 'BA', 'regiao': 'Nordeste'}
 ]
 
-# Distribuição de formatos: 14 Hiper, 34 Super, 44 Bairro = 92 Total
+# Distribuição de formatos
 formatos = ['Hiper'] * 14 + ['Super'] * 34 + ['Bairro'] * 44
 np.random.shuffle(formatos)
 
@@ -115,39 +115,55 @@ lojas_df['Nome'] = lojas_df['Formato'] + ' ' + lojas_df['bairro']
 lojas_df['Sigla'] = lojas_df['bairro'].apply(lambda n: n[:3].upper())
 lojas_df['Unidade'] = lojas_df['Sigla'] + ' - ' + lojas_df['Nome']
 
-consumo_base_map = {'Hiper': 5000, 'Super': 2200, 'Bairro': 800}
-sazonalidade_map = {'Norte': 0.15, 'Nordeste': 0.20, 'Centro-Oeste': 0.30, 'Sudeste': 0.35, 'Sul': 0.40}
+# Formatação Geográfica para o Looker Studio
+lojas_df['uf'] = 'BR-' + lojas_df['uf']
+lojas_df['País'] = 'Brasil'
 
-lojas_df['consumo_base'] = lojas_df['Formato'].map(consumo_base_map)
+
+# Define uma eficiência base (consumo por m²) para cada formato
+eficiencia_map = {'Hiper': 1.3, 'Super': 1.5, 'Bairro': 2.0} # Bairro é menos eficiente por m²
+lojas_df['eficiencia_base'] = lojas_df['Formato'].map(eficiencia_map)
+
+# Adiciona um fator aleatório para cada loja (de 85% a 115% da eficiência base)
+fator_aleatorio_loja = np.random.uniform(0.85, 1.15, size=len(lojas_df))
+lojas_df['consumo_base_individual'] = (lojas_df['eficiencia_base'] * lojas_df['Area da unidade em m²']) * fator_aleatorio_loja
+
+sazonalidade_map = {'Norte': 0.15, 'Nordeste': 0.20, 'Centro-Oeste': 0.30, 'Sudeste': 0.35, 'Sul': 0.40}
 lojas_df['fator_sazonalidade'] = lojas_df['regiao'].map(sazonalidade_map)
 
 # --- 3. Geração da Série Temporal ---
-hoje = datetime.date.today()
-data_final = hoje - datetime.timedelta(days=1)
-data_inicial = data_final - datetime.timedelta(days=3*365 -1)
+# Usando datas fixas para garantir que os 3 anos completos sejam gerados
+data_final = datetime.date(2025, 6, 30)
+data_inicial = datetime.date(2022, 1, 1)
 datas = pd.to_datetime(pd.date_range(start=data_inicial, end=data_final, freq='D'))
 
 # --- 4. Combinação de Lojas e Datas e Cálculo do Consumo ---
 df_final = pd.DataFrame(pd.MultiIndex.from_product([lojas_df['Unidade'], datas], names=['Unidade', 'Data']).to_frame(index=False))
-
 df_final = pd.merge(df_final, lojas_df, on='Unidade')
 
 dia_do_ano = df_final['Data'].dt.dayofyear
-
-# ===== CORREÇÃO DA LÓGICA DE SAZONALIDADE =====
-# A função cos(x) modela o padrão: alto no início/fim do ano e baixo no meio
 fator_sazonal = np.cos(2 * np.pi * dia_do_ano / 365)
-
 variacao_sazonal = df_final['fator_sazonalidade'] * fator_sazonal
+
+# NOVO: Fator de variação anual para simular crescimento/redução
+ano_map = {
+    2022: 1.0,         # Ano base
+    2023: 1.15,        # Aumento de 15% no consumo
+    2024: 1.08,        # Aumento de 8% em relação a 2022
+    2025: 1.12         # Aumento de 25% em relação a 2022
+}
+df_final['fator_anual'] = df_final['Data'].dt.year.map(ano_map)
+
+# Ruído aleatório diário (pequenas flutuações)
 ruido_aleatorio = np.random.uniform(-0.05, 0.05, size=len(df_final))
 
-df_final['Consumo kWh'] = df_final['consumo_base'] * (1 + variacao_sazonal + ruido_aleatorio)
-df_final['Consumo kWh'] = df_final['Consumo kWh'].round(2)
+df_final['Consumo kWh'] = df_final['consumo_base_individual'] * df_final['fator_anual'] * (1 + variacao_sazonal + ruido_aleatorio)
+df_final['Consumo kWh'] = df_final['Consumo kWh'].round(2).clip(0) # .clip(0) garante que não haja consumo negativo
 
 # --- 5. Finalização e Exportação ---
 colunas_finais = [
     'Unidade', 'Nome', 'Area da unidade em m²', 'Data', 'Consumo kWh',
-    'Formato', 'cidade', 'uf', 'regiao'
+    'Formato', 'cidade', 'uf', 'regiao', 'País'
 ]
 df_final = df_final[colunas_finais]
 
@@ -158,9 +174,8 @@ df_final.rename(columns={
     'regiao': 'Região'
 }, inplace=True)
 
-
 # Exporta para CSV
-output_filename = 'consumo_energia_supermercados.csv'
+output_filename = 'consumo_energia_supermercados_v2.csv'
 df_final.to_csv(output_filename, index=False, date_format='%Y-%m-%d')
 
 print(f"Dataset gerado com sucesso! {len(df_final)} linhas foram salvas em '{output_filename}'.")
