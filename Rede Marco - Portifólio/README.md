@@ -1,6 +1,6 @@
 # Análise Preditiva e Otimização de Consumo de Energia para Rede de Varejo
 
-![Status](https://img.shields.io/badge/status-concluído-brightgreen)
+![Status](./img/preview_dashboard.png)
 
 ## 📄 Resumo do Projeto
 
@@ -12,9 +12,8 @@ A solução vai desde a criação de um dataset sintético e realista com Python
 
 O resultado final do projeto é um dashboard interativo de 3 páginas, que permite uma análise completa do cenário de consumo de energia da empresa.
 
-**[Acesse o dashboard completo e interativo aqui](https://lookerstudio.google.com/reporting/70a0371c-7d8f-4512-bce6-a38106fa19fe])**
+**[Acesse o dashboard completo e interativo aqui](https://lookerstudio.google.com/reporting/70a0371c-7d8f-4512-bce6-a38106fa19fe)**
 
-*(Sugestão: Insira aqui o GIF do seu dashboard em ação que você criou para o LinkedIn)*
 
 ![Preview do Dashboard](https://drive.google.com/file/d/1V-DxizCY-gQ5B4DXHm604XFQpniKu9-N/view?usp=sharing)
 
