@@ -20,7 +20,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um possui sua
 
 | Projeto | Descrição | Tecnologias Utilizadas | Acesso Rápido |
 |---|---|---|---|
-| **[Análise de Consumo de Energia](./Rede%20Marco%20-%20Portifólio/)** | Solução de BI e Forecast para otimizar o consumo de energia em uma rede de supermercados, incluindo um simulador de economia. | `Python`, `Prophet`, `Pandas`, `Looker Studio` | [![Dashboard](https://img.shields.io/badge/Ver%20Dashboard-4285F4?style=for-the-badge&logo=google-data-studio&logoColor=white)]([LINK_PÚBLICO_DO_SEU_DASHBOARD]) <br><br> [![Detalhes](https://img.shields.io/badge/Ver%20Detalhes-181717?style=for-the-badge&logo=github&logoColor=white)](./Rede%20Marco%20-%20Portifólio/README.md) |
+| **[Análise de Consumo de Energia](./Rede%20Marco%20-%20Portifólio/)** | Solução de BI e Forecast para otimizar o consumo de energia em uma rede de supermercados, incluindo um simulador de economia. | `Python`, `Prophet`, `Pandas`, `Looker Studio` | [![Dashboard](https://img.shields.io/badge/Ver%20Dashboard-4285F4?style=for-the-badge&logo=google-data-studio&logoColor=white)](https://lookerstudio.google.com/reporting/70a0371c-7d8f-4512-bce6-a38106fa19fe) <br><br> [![Detalhes](https://img.shields.io/badge/Ver%20Detalhes-181717?style=for-the-badge&logo=github&logoColor=white)](./Rede%20Marco%20-%20Portifólio/README.md) |
 
 ---
 
