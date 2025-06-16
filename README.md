@@ -4,7 +4,7 @@ Aspirante a Analista de Dados com foco em transformar dados em insights acionáv
 
 ## 📄 Sobre Mim
 
-Atualmente cursando Sistemas para Internet, sou um entusiasta de tecnologia apaixonado pelo universo dos dados. Minha jornada acadêmica e projetos pessoais têm sido focados em aprender e aplicar técnicas de análise, manipulação e visualização de dados para resolver problemas práticos.
+Atualmente cursando Sistemas para Internet. Minha jornada acadêmica e projetos pessoais têm sido focados em aprender e aplicar técnicas de análise, manipulação e visualização de dados para resolver problemas práticos.
 
 Meu objetivo é iniciar minha carreira como **Analista de Dados**, aplicando meu conhecimento para gerar valor e, futuramente, evoluir para a área de **Ciência de Dados**. Tenho experiência com ferramentas de BI como Looker Studio e Tableau, e em análise e modelagem com Python.
 
