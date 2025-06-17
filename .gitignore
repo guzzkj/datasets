@@ -1,1 +1,14 @@
-API Youtube - Portifólio/api_key.txt
+# Arquivos de Chaves de API e Credenciais
+api_key.txt
+kaggle.json
+
+# Pasta do Ambiente Virtual
+venv/
+
+# Arquivos de Cache do Python
+__pycache__/
+*.pyc
+
+# Arquivos de configuração de IDEs
+.vscode/
+.idea/
