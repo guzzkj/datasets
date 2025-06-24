@@ -83,4 +83,4 @@ python gerar_previsao.py
 Projeto desenvolvido por **Gustavo Henrique Barros da Silva**.
 
 * **LinkedIn:** [https://www.linkedin.com/in/gustavohbarros/](https://www.linkedin.com/in/gustavohbarros/)
-* **Email:** [gustavo.hbarros.sp@gmail.com](mailto:gustavo.hbarros.sp@gmail.com)
+* **Email:** [gustavobarros.ctt@gmail.com](mailto:gustavobarros.ctt@gmail.com)
