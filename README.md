@@ -37,4 +37,4 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um possui sua
 Este repositório é mantido por Gustavo Barros. Para mais informações sobre minha trajetória profissional e outras competências, por favor, conecte-se comigo.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gustavohbarros/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:gustavo.hbarros.sp@gmail.com)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:gustavobarros.ctt@gmail.com)
