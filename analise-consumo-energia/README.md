@@ -14,9 +14,6 @@ O resultado final do projeto é um dashboard interativo de 3 páginas, que permi
 
 **[Acesse o dashboard completo e interativo aqui](https://lookerstudio.google.com/reporting/70a0371c-7d8f-4512-bce6-a38106fa19fe)**
 
-
-![Preview do Dashboard](https://drive.google.com/file/d/1V-DxizCY-gQ5B4DXHm604XFQpniKu9-N/view?usp=sharing)
-
 ## 🎯 O Problema de Negócio
 
 A gestão de custos operacionais, como o de energia elétrica, é crucial para a saúde financeira de grandes redes de varejo. Sem uma análise detalhada e uma visão futura do consumo, a tomada de decisão para investimentos em eficiência energética se torna reativa e imprecisa.
