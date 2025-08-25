@@ -19,10 +19,10 @@ O resultado final do projeto é um dashboard interativo que permite a exploraç�
 Comparar a performance de ações de diferentes mercados apresenta desafios significativos, como moedas distintas (BRL vs. USD) e escalas de preço muito diferentes. Uma análise superficial baseada apenas nos preços absolutos pode levar a conclusões equivocadas sobre o crescimento real e o risco de cada ativo.
 
 Este projeto buscou responder às seguintes questões:
-*Como comparar de forma justa o crescimento percentual de ações com preços e moedas diferentes?
-*Qual ativo ofereceu o melhor retorno no período selecionado?
-*Qual ativo apresentou o maior risco (volatilidade) para o investidor?
-*Existe uma correlação entre o volume de negociações e os movimentos de preço?
+* Como comparar de forma justa o crescimento percentual de ações com preços e moedas diferentes?
+* Qual ativo ofereceu o melhor retorno no período selecionado?
+* Qual ativo apresentou o maior risco (volatilidade) para o investidor?
+* Existe uma correlação entre o volume de negociações e os movimentos de preço?
 
 ## ✨ Principais Funcionalidades
 
