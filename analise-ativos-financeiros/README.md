@@ -1,6 +1,6 @@
 # Análise Comparativa de Ativos Financeiros
 
-![Status](./img/preview_dashboard.png)
+![Status](./img/preview-dashboard.png)
 
 ## 📄 Resumo do Projeto
 
