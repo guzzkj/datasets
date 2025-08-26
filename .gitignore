@@ -16,3 +16,5 @@ __pycache__/
 # Arquivos de projeto de BI
 *.pbix
 *.twb
+*.twbr
+*.twbx
