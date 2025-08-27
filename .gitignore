@@ -14,7 +14,7 @@ __pycache__/
 .idea/
 
 # Arquivos de projeto de BI
-*.pbix
-*.twb
-*.twbr
-*.twbx
+#*.pbix
+#*.twb
+#*.twbr
+#*.twbx
