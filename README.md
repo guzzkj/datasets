@@ -30,7 +30,7 @@ Abaixo está a lista de projetos contidos neste repositório. Cada um possui sua
 | **[Análise de Churn de Clientes com SQL](./analise-churn-sql/)** | Utilização de SQL avançado para identificar padrões e o risco de cancelamento de clientes. | `SQL`, `Power BI`, `Python` | [![Dashboard](https://img.shields.io/badge/Ver%20Dashboard-F2C811?style=for-the-badge&logo=power-bi&logoColor=black)]([LINK_PARA_SEU_DASHBOARD_POWERBI]) <br><br> [![Detalhes](https://img.shields.io/badge/Ver%20Detalhes-181717?style=for-the-badge&logo=github&logoColor=white)](./analise-churn-sql/README.md) |
 
 
----
+----
 
 ## 👨‍💻 Sobre Mim
 
