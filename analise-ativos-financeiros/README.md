@@ -2,19 +2,19 @@
 
 ![Status](./img/preview-dashboard.png)
 
-## 📄 Resumo do Projeto
+##  Resumo do Projeto
 
 Este projeto apresenta uma solução completa de Business Intelligence para a análise de performance de ativos financeiros. O objetivo é comparar o desempenho histórico, o retorno e o risco (volatilidade) de um portfólio de ações selecionadas de diferentes mercados (B3 no Brasil e Nasdaq nos EUA).
 
 A solução vai desde a coleta de dados históricos via API com Python até o desenvolvimento de um dashboard interativo e analiticamente robusto no Power BI, utilizando medidas DAX avançadas para permitir uma comparação justa e profunda entre os ativos.
 
-## 📊 Dashboard Interativo
+##  Dashboard Interativo
 
 O resultado final do projeto é um dashboard interativo que permite a exploração da performance das ações sob diferentes períodos e seleções, fornecendo insights sobre retorno, risco e atividade de mercado.
 
 **[Acesse o dashboard completo e interativo aqui](https:)**
 
-## 🎯 O Problema de Negócio
+##  O Problema de Negócio
 
 Comparar a performance de ações de diferentes mercados apresenta desafios significativos, como moedas distintas (BRL vs. USD) e escalas de preço muito diferentes. Uma análise superficial baseada apenas nos preços absolutos pode levar a conclusões equivocadas sobre o crescimento real e o risco de cada ativo.
 
@@ -24,7 +24,7 @@ Este projeto buscou responder às seguintes questões:
 * Qual ativo apresentou o maior risco (volatilidade) para o investidor?
 * Existe uma correlação entre o volume de negociações e os movimentos de preço?
 
-## ✨ Principais Funcionalidades
+##  Principais Funcionalidades
 
 * **KPIs Dinâmicos:** Cartões de indicadores que exibem o retorno total, os preços máximo e mínimo, e identificam automaticamente os ativos de melhor e pior performance no período selecionado.
 
@@ -36,7 +36,7 @@ Este projeto buscou responder às seguintes questões:
 
 * **Filtros Interativos:** Segmentações de dados que permitem ao usuário final filtrar a análise por um intervalo de datas específico e selecionar as ações de interesse.
 
-## 🛠️ Ferramentas e Tecnologias
+##  Ferramentas e Tecnologias
 
 * **Linguagem:** Python 3
 * **Bibliotecas de Análise:** Pandas, yfinance
@@ -44,7 +44,7 @@ Este projeto buscou responder às seguintes questões:
 * **Linguagem de Fórmulas:** DAX (Data Analysis Expressions)
 * **Controle de Versão:** Git & GitHub
 
-## ⚙️ Metodologia
+##  Metodologia
 O projeto foi estruturado em três etapas principais:
 
 1.  **Coleta e Preparação de Dados (coletar_dados_acoes.py):** Desenvolvimento de um script Python para se conectar à API do Yahoo Finance (via yfinance) e extrair 5 anos de dados históricos para 6 ações selecionadas. O script também realiza a formatação inicial dos dados, salvando-os em um arquivo CSV com o separador decimal correto (vírgula) para o Power BI.
@@ -53,7 +53,7 @@ O projeto foi estruturado em três etapas principais:
 
 3.  **Desenvolvimento do Dashboard (Power BI & DAX):** O dashboard foi construído utilizando visuais interativos. A lógica analítica foi implementada através de medidas DAX avançadas para calcular o Preço Indexado (Base 100), o Retorno no Período %, a Volatilidade (Desvio Padrão) e os KPIs de melhor/pior performance.
 
-## 🚀 Como Executar o Projeto Localmente
+##  Como Executar o Projeto Localmente
 Para executar o script de coleta de dados, siga os passos abaixo.
 
 **Pré-requisitos:**
@@ -76,7 +76,7 @@ pip install pandas yfinance
 python coletar_dados_acoes.py
 ```
 
-## 👨‍💻 Autor
+##  Autor
 
 Projeto desenvolvido por **Gustavo Henrique Barros da Silva**.
 
