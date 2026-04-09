@@ -2,19 +2,19 @@
 
 ![Status](./img/preview_dashboard.png)
 
-## 📄 Resumo do Projeto
+##  Resumo do Projeto
 
 Este projeto apresenta uma solução completa de Business Intelligence e Análise Preditiva desenvolvida para uma rede fictícia de supermercados. O objetivo principal é monitorar, prever e otimizar o consumo de energia elétrica, traduzindo dados brutos em insights acionáveis e oportunidades de economia financeira.
 
 A solução vai desde a criação de um dataset sintético e realista com Python até o desenvolvimento de um dashboard interativo no Looker Studio, que inclui um modelo de previsão de consumo e um simulador de cenários de economia.
 
-## 📊 Dashboard Interativo
+##  Dashboard Interativo
 
 O resultado final do projeto é um dashboard interativo de 3 páginas, que permite uma análise completa do cenário de consumo de energia da empresa.
 
 **[Acesse o dashboard completo e interativo aqui](https://lookerstudio.google.com/reporting/70a0371c-7d8f-4512-bce6-a38106fa19fe)**
 
-## 🎯 O Problema de Negócio
+##  O Problema de Negócio
 
 A gestão de custos operacionais, como o de energia elétrica, é crucial para a saúde financeira de grandes redes de varejo. Sem uma análise detalhada e uma visão futura do consumo, a tomada de decisão para investimentos em eficiência energética se torna reativa e imprecisa.
 
@@ -23,21 +23,21 @@ Este projeto buscou responder às seguintes questões:
 * Qual é a tendência de consumo para os próximos meses?
 * Qual seria o impacto financeiro de se atingir determinadas metas de redução de consumo?
 
-## ✨ Principais Funcionalidades
+##  Principais Funcionalidades
 
 * **Dashboard Executivo:** Visão geral com os principais KPIs de consumo, custo e eficiência (kWh/m²).
 * **Análise de Performance Ano-sobre-Ano:** Comparativo detalhado do consumo entre diferentes anos, com ranking de performance por loja.
 * **Modelo de Previsão (Forecast):** Utilização da biblioteca Prophet (Facebook) para prever o consumo de cada loja individualmente para os meses seguintes.
 * **Simulador Interativo de Economia:** Ferramenta que permite ao usuário final definir metas de economia e um custo por kWh para calcular o impacto financeiro projetado com base na previsão.
 
-## 🛠️ Ferramentas e Tecnologias
+##  Ferramentas e Tecnologias
 
 * **Linguagem:** Python 3
 * **Bibliotecas de Análise:** Pandas, Prophet
 * **Ferramenta de BI:** Looker Studio (Google Data Studio)
 * **Controle de Versão:** Git & GitHub
 
-## ⚙️ Metodologia
+##  Metodologia
 
 O projeto foi estruturado em três etapas principais:
 
@@ -47,7 +47,7 @@ O projeto foi estruturado em três etapas principais:
 
 3.  **Desenvolvimento do Dashboard (Looker Studio):** O dataset final e unificado foi utilizado como fonte de dados para a criação de um relatório interativo, com métricas calculadas, parâmetros de simulação e visualizações geográficas.
 
-## 🚀 Como Executar o Projeto Localmente
+##  Como Executar o Projeto Localmente
 
 Para executar os scripts e gerar os arquivos de dados, siga os passos abaixo.
 
@@ -75,7 +75,7 @@ python gerador_dataset.py
 python gerar_previsao.py
 ```
 
-## 👨‍💻 Autor
+##  Autor
 
 Projeto desenvolvido por **Gustavo Henrique Barros da Silva**.
 
