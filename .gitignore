@@ -8,6 +8,7 @@ venv/
 # Arquivos de Cache do Python
 __pycache__/
 *.pyc
+/.claude
 
 # Arquivos de configuração de IDEs
 .vscode/
